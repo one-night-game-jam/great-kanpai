@@ -1,6 +1,7 @@
 using UniRx;
 using UniRx.Async;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 using UIs;
@@ -15,8 +16,8 @@ namespace Managers
         [Inject]
         ReadyUI readyUI;
 
-        // [SerializeField]
-        // ResultUI resultUI;
+        [Inject]
+        ResultUI resultUI;
 
         async void Start()
         {
@@ -50,9 +51,9 @@ namespace Managers
 
         async UniTask Result()
         {
-            // TODO: Display result
-            // TODO: Await reload button
-            // TODO: Reload the scene
+            resultUI.gameObject.SetActive(true);
+            await resultUI.OnRestartGame.First();
+            SceneManager.LoadScene(0);
         }
     }
 }
