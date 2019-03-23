@@ -6,10 +6,19 @@ using Zenject;
 public class PlayerInstaller : MonoInstaller<PlayerInstaller>
 {
     [SerializeField]
+    bool isPlayer;
+    [SerializeField]
     int playerNum;
 
     public override void InstallBindings()
     {
-        Container.Bind<IInputEventProvider>().To<PlayerInputEventProvider>().AsSingle().WithArguments(playerNum);
+        if (isPlayer)
+        {
+            Container.Bind<IInputEventProvider>().To<PlayerInputEventProvider>().AsSingle().WithArguments(playerNum);
+        }
+        else
+        {
+            Container.Bind<IInputEventProvider>().To<AiInputEventProvider>().AsSingle();
+        }
     }
 }
