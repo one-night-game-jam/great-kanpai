@@ -12,8 +12,8 @@ namespace Managers
         [Inject]
         TitleUI titleUI;
 
-        // [SerializeField]
-        // ReadyUI titleUI;
+        [Inject]
+        ReadyUI readyUI;
 
         // [SerializeField]
         // ResultUI resultUI;
@@ -36,7 +36,9 @@ namespace Managers
 
         async UniTask Ready()
         {
-            // TODO: Show/Hide ready UI
+            readyUI.gameObject.SetActive(true);
+            await readyUI.DisplayTimeout.First();
+            readyUI.gameObject.SetActive(false);
         }
 
         async UniTask Fighting()
