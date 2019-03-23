@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1097409619768635187}
-  movePower: 10
+  movePower: 1000
   jumpPower: 10
 --- !u!114 &5862629503480217600
 MonoBehaviour:

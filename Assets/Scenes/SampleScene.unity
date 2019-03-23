@@ -383,7 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72780e95eba364a499735996d83a9cee, type: 3}
---- !u!1001 &1434110509
+--- !u!1001 &1862733044
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -452,18 +452,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1097409619768635184, guid: 72780e95eba364a499735996d83a9cee,
         type: 3}
-      propertyPath: power
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1097409619768635184, guid: 72780e95eba364a499735996d83a9cee,
-        type: 3}
       propertyPath: movePower
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1097409619768635184, guid: 72780e95eba364a499735996d83a9cee,
-        type: 3}
-      propertyPath: jumpPower
-      value: 10
+      value: -1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72780e95eba364a499735996d83a9cee, type: 3}
