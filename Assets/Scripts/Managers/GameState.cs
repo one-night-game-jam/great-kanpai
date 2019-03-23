@@ -1,9 +1,13 @@
+using System.Collections.Generic;
+using System;
+using System.Linq;
 using UniRx;
 using UniRx.Async;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
+using Players;
 using UIs;
 
 namespace Managers
@@ -22,6 +26,8 @@ namespace Managers
         [Inject]
         PlayerSpawner playerSpawner;
 
+        List<PlayerCore> players;
+
         async void Start()
         {
             await Title();
@@ -34,7 +40,7 @@ namespace Managers
         {
             titleUI.gameObject.SetActive(true);
             var gameMode = await titleUI.OnSelectGameMode.First();
-            playerSpawner.SpawnPlayers(gameMode);
+            players = playerSpawner.SpawnPlayers(gameMode);
             titleUI.gameObject.SetActive(false);
         }
 
@@ -47,9 +53,7 @@ namespace Managers
 
         async UniTask Fighting()
         {
-            // TODO: Enable player inputs
-            // TODO: Await game finish
-            // TODO: Disable player inputs
+            await players.Select(p => p.OnDied).Merge().First();
         }
 
         async UniTask Result()
