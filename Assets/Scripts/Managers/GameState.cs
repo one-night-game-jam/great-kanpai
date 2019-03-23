@@ -19,6 +19,9 @@ namespace Managers
         [Inject]
         ResultUI resultUI;
 
+        [Inject]
+        PlayerSpawner playerSpawner;
+
         async void Start()
         {
             await Title();
@@ -31,7 +34,7 @@ namespace Managers
         {
             titleUI.gameObject.SetActive(true);
             var gameMode = await titleUI.OnSelectGameMode.First();
-            // TODO: Instantiate players
+            playerSpawner.SpawnPlayers(gameMode);
             titleUI.gameObject.SetActive(false);
         }
 
