@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 1097409619768635189}
   - component: {fileID: 1097409619768635186}
   - component: {fileID: 1097409619768635187}
+  - component: {fileID: 8198590003014985267}
   - component: {fileID: 1097409619768635184}
+  - component: {fileID: 5862629503480217600}
+  - component: {fileID: 4162209435376367289}
   m_Layer: 0
   m_Name: Mug
   m_TagString: Untagged
@@ -110,6 +113,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &8198590003014985267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097409619768635185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8a8644ee0ad49a4922288b5fe151fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1097409619768635184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,3 +140,37 @@ MonoBehaviour:
   rb: {fileID: 1097409619768635187}
   movePower: 10
   jumpPower: 10
+--- !u!114 &5862629503480217600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097409619768635185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _installers: []
+  _installerPrefabs: []
+  _scriptableObjectInstallers: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &4162209435376367289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097409619768635185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 8198590003014985267}
+  _identifier: 
+  _context: {fileID: 5862629503480217600}
+  _bindType: 0
