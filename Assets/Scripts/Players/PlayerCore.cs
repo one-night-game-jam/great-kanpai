@@ -40,5 +40,30 @@ namespace Players
             OnDied.Subscribe(_ => Debug.Log("died"))
                 .AddTo(this);
         }
+
+        public class Factory : IFactory<Factory.Type, PlayerCore>
+        {
+            DiContainer container;
+            PlayerCore[] prefabs;
+
+            public enum Type
+            {
+                Player1,
+                Player2,
+                Ai
+            }
+
+            [Inject]
+            public void Construct(PlayerCore[] gameObjects, DiContainer container)
+            {
+                this.container = container;
+                prefabs = gameObjects;
+            }
+
+            PlayerCore IFactory<Type, PlayerCore>.Create(Type type)
+            {
+                return container.InstantiatePrefabForComponent<PlayerCore>(prefabs[(int)type]);
+            }
+        }
     }
 }
