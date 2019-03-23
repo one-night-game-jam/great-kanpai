@@ -1,3 +1,4 @@
+using System;
 using Players;
 using Players.InputEventProviderImpls;
 using UnityEngine;
@@ -14,11 +15,17 @@ public class PlayerInstaller : MonoInstaller<PlayerInstaller>
     {
         if (isPlayer)
         {
-            Container.Bind<IInputEventProvider>().To<PlayerInputEventProvider>().AsSingle().WithArguments(playerNum);
+            Container.Bind(typeof(IInputEventProvider), typeof(IDisposable))
+                .To<PlayerInputEventProvider>()
+                .AsSingle()
+                .WithArguments(playerNum);
         }
         else
         {
-            Container.Bind<IInputEventProvider>().To<AiInputEventProvider>().AsSingle();
+            Container.Bind(typeof(IInputEventProvider), typeof(ITickable))
+                .To<AiInputEventProvider>()
+                .AsSingle()
+                .WithArguments(transform);
         }
     }
 }
