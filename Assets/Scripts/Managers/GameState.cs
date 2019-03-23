@@ -1,12 +1,16 @@
+using UniRx;
 using UniRx.Async;
 using UnityEngine;
+using Zenject;
 
-namespace GameState
+using UIs;
+
+namespace Managers
 {
     public class GameState : MonoBehaviour
     {
-        // [SerializeField]
-        // TitleUI titleUI;
+        [Inject]
+        TitleUI titleUI;
 
         // [SerializeField]
         // ReadyUI titleUI;
@@ -24,8 +28,10 @@ namespace GameState
 
         async UniTask Title()
         {
-            // TODO: Await game mode selection
+            titleUI.gameObject.SetActive(true);
+            var gameMode = await titleUI.OnSelectGameMode.First();
             // TODO: Instantiate players
+            titleUI.gameObject.SetActive(false);
         }
 
         async UniTask Ready()
