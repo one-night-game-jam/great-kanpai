@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 8252337865818882504, guid: e94dbdab43b9d4f22811bb83c3d1057a,
         type: 3}
       propertyPath: m_Name
-      value: Mug
+      value: Ai
       objectReference: {fileID: 0}
     - target: {fileID: 8252337865818922472, guid: e94dbdab43b9d4f22811bb83c3d1057a,
         type: 3}
