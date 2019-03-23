@@ -33,14 +33,6 @@ namespace Players
                 .Where(t => t.tag == "JumpableArea")
                 .Select(_ => false));
 
-        void Start()
-        {
-            OnHit.Subscribe(_ => Debug.Log("hit"))
-                .AddTo(this);
-            OnDied.Subscribe(_ => Debug.Log("died"))
-                .AddTo(this);
-        }
-
         public class Factory : IFactory<Factory.Type, PlayerCore>
         {
             DiContainer container;
