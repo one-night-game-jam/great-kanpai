@@ -1,4 +1,5 @@
-﻿using Players;
+﻿using System.Collections.Generic;
+using Players;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +16,7 @@ namespace Managers
             this.playerFactory = playerFactory;
         }
 
-        public void SpawnPlayers(GameMode gameMode)
+        public List<PlayerCore> SpawnPlayers(GameMode gameMode)
         {
             PlayerCore left = null;
             PlayerCore right = null;
@@ -32,6 +33,11 @@ namespace Managers
             }
             left.gameObject.transform.position = LeftSideSpawnPoint;
             right.gameObject.transform.position = RightSideSpawnPoint;
+
+            var players = new List<PlayerCore>(2);
+            players.Add(left);
+            players.Add(right);
+            return players;
         }
     }
 }
