@@ -9,8 +9,8 @@ namespace UIs
 {
     public class TitleUI : MonoBehaviour
     {
-        // [SerializeField]
-        // Button startOnePlayerModeButton;
+        [SerializeField]
+        Button startOnePlayerModeButton;
         [SerializeField]
         Button startTwoPlayerModeButton;
 
@@ -18,16 +18,13 @@ namespace UIs
         {
             get
             {
-                // var startOnePlayer = startOnePlayerModeButton
-                //     .OnClickAsObservable()
-                //     .Select(_ => GameMode.OnePlayer);
-                // var startTwoPlayer = startTwoPlayerModeButton
-                //     .OnClickAsObservable()
-                //     .Select(_ => GameMode.TwoPlayer);
-                // return Observable.Merge(startOnePlayer, startTwoPlayer);
-                return startTwoPlayerModeButton
+                var startOnePlayer = startOnePlayerModeButton
+                    .OnClickAsObservable()
+                    .Select(_ => GameMode.OnePlayer);
+                var startTwoPlayer = startTwoPlayerModeButton
                     .OnClickAsObservable()
                     .Select(_ => GameMode.TwoPlayer);
+                return Observable.Merge(startOnePlayer, startTwoPlayer);
             }
         }
     }
