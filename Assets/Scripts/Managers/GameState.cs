@@ -31,8 +31,11 @@ namespace Managers
         async void Start()
         {
             await Title();
-            await Ready();
-            await Fighting();
+            // Handle finish of fighting during ready state correctly
+            var ready = Ready();
+            var fighting = Fighting();
+            await ready;
+            await fighting;
             await Result();
         }
 
