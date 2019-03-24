@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4861931169563003860}
   movePower: 5000
-  jumpPower: 40
+  jumpPower: 100
 --- !u!114 &3249165845049699400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +274,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: f6891a50906b9419b9a8a4f2361d8cef, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c29d6115ce88748c3862bac3a7cc54e6, type: 2}
     - target: {fileID: 400004, guid: f6891a50906b9419b9a8a4f2361d8cef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -318,10 +322,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: f6891a50906b9419b9a8a4f2361d8cef, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c29d6115ce88748c3862bac3a7cc54e6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6891a50906b9419b9a8a4f2361d8cef, type: 3}
 --- !u!1 &8252337865818882504 stripped
