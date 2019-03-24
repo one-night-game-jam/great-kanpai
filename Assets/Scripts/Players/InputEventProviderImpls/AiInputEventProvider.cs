@@ -24,10 +24,17 @@ namespace Players.InputEventProviderImpls
 
         void ITickable.Tick()
         {
-            jump.Value = Random.value < (Mathf.Abs(transform.position.x) < 10.5 ? 0.01f : 0.05f);
+            jump.Value = Random.value < (Mathf.Abs(transform.position.x) < 9f ? 0.01f : 0.03f);
             if (Mathf.Abs(targetPosition - transform.position.x) < 1 || Random.value < 0.005f)
             {
-                targetPosition = Random.Range(-8.5f, 8.5f);
+                if (Random.value < Mathf.Abs(transform.position.x) * 0.06f)
+                {
+                    targetPosition = Random.insideUnitCircle.x * 9f;
+                }
+                else
+                {
+                    targetPosition = transform.position.x;
+                }
             }
             move.Value = Mathf.Clamp(targetPosition - transform.position.x, -1, 1);
         }
