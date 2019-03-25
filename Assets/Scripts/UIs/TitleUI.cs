@@ -14,6 +14,11 @@ namespace UIs
         [SerializeField]
         Button startTwoPlayerModeButton;
 
+        void OnEnable()
+        {
+            startOnePlayerModeButton.Select();
+        }
+
         public IObservable<GameMode> OnSelectGameMode
         {
             get
