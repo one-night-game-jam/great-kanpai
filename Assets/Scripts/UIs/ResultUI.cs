@@ -12,5 +12,10 @@ namespace UIs
         [SerializeField]
         Button restartGameButton;
         public IObservable<Unit> OnRestartGame => restartGameButton.OnClickAsObservable().AsUnitObservable();
+
+        void OnEnable()
+        {
+            restartGameButton.Select();
+        }
     }
 }
