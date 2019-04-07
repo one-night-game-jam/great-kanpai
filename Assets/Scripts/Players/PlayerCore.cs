@@ -33,28 +33,18 @@ namespace Players
                 .Where(t => t.tag == "JumpableArea")
                 .Select(_ => false));
 
-        public class Factory : IFactory<Factory.Type, PlayerCore>
+        public class Factory : PlaceholderFactory<Factory.PlayerSettings, PlayerCore>
         {
-            DiContainer container;
-            PlayerCore[] prefabs;
-
-            public enum Type
+            public struct PlayerSettings
             {
-                Player1,
-                Player2,
-                Ai
-            }
+                public bool IsPlayer { get; }
+                public int PlayerNum { get; }
 
-            [Inject]
-            public void Construct(PlayerCore[] gameObjects, DiContainer container)
-            {
-                this.container = container;
-                prefabs = gameObjects;
-            }
-
-            PlayerCore IFactory<Type, PlayerCore>.Create(Type type)
-            {
-                return container.InstantiatePrefabForComponent<PlayerCore>(prefabs[(int)type]);
+                public PlayerSettings(bool isPlayer, int playerNum)
+                {
+                    IsPlayer = isPlayer;
+                    PlayerNum = playerNum;
+                }
             }
         }
     }

@@ -10,10 +10,9 @@ public class SceneInstaller : MonoInstaller<SceneInstaller>
 
     public override void InstallBindings()
     {
-        Container.Bind<IFactory<PlayerCore.Factory.Type, PlayerCore>>()
-            .To<PlayerCore.Factory>()
-            .AsSingle()
-            .WithArguments(playerPrefabs);
+        Container.BindFactory<PlayerCore.Factory.PlayerSettings, PlayerCore, PlayerCore.Factory>()
+            .FromSubContainerResolve()
+            .ByNewContextPrefab<PlayerInstaller>(playerPrefabs[0]);
         Container.Bind<PlayerSpawner>().AsSingle();
     }
 }

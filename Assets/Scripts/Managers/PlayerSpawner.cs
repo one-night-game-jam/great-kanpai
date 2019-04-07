@@ -7,11 +7,11 @@ namespace Managers
 {
     public class PlayerSpawner
     {
-        readonly IFactory<PlayerCore.Factory.Type, PlayerCore> playerFactory;
+        readonly PlayerCore.Factory playerFactory;
         readonly Vector3 LeftSideSpawnPoint = new Vector3(-8, 0, 0);
         readonly Vector3 RightSideSpawnPoint = new Vector3(8, 0, 0);
 
-        PlayerSpawner(IFactory<PlayerCore.Factory.Type, PlayerCore> playerFactory)
+        PlayerSpawner(PlayerCore.Factory playerFactory)
         {
             this.playerFactory = playerFactory;
         }
@@ -23,12 +23,12 @@ namespace Managers
             switch (gameMode)
             {
                 case GameMode.OnePlayer:
-                    left = playerFactory.Create(PlayerCore.Factory.Type.Player1);
-                    right = playerFactory.Create(PlayerCore.Factory.Type.Ai);
+                    left = playerFactory.Create(new PlayerCore.Factory.PlayerSettings(true, 0));
+                    right = playerFactory.Create(new PlayerCore.Factory.PlayerSettings(false, 1));
                     break;
                 case GameMode.TwoPlayer:
-                    left = playerFactory.Create(PlayerCore.Factory.Type.Player1);
-                    right = playerFactory.Create(PlayerCore.Factory.Type.Player2);
+                    left = playerFactory.Create(new PlayerCore.Factory.PlayerSettings(true, 0));
+                    right = playerFactory.Create(new PlayerCore.Factory.PlayerSettings(true, 1));
                     break;
             }
             left.gameObject.transform.position = LeftSideSpawnPoint;
