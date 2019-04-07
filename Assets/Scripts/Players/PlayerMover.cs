@@ -16,9 +16,13 @@ namespace Players
 
         [Inject]
         PlayerCore core;
+        [Inject]
+        int playerNum;
 
         void Start()
         {
+            transform.rotation = playerNum == 0 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
+
             core.OnJump
                 .ObserveOn(Scheduler.MainThreadFixedUpdate)
                 .Subscribe(_ => rb.AddForce(0, jumpPower, 0, ForceMode.Impulse))

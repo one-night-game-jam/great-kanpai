@@ -6,13 +6,13 @@ using Zenject;
 public class SceneInstaller : MonoInstaller<SceneInstaller>
 {
     [SerializeField]
-    PlayerCore[] playerPrefabs;
+    PlayerCore playerPrefab;
 
     public override void InstallBindings()
     {
         Container.BindFactory<PlayerCore.Factory.PlayerSettings, PlayerCore, PlayerCore.Factory>()
             .FromSubContainerResolve()
-            .ByNewContextPrefab<PlayerInstaller>(playerPrefabs[0]);
+            .ByNewContextPrefab<PlayerInstaller>(playerPrefab);
         Container.Bind<PlayerSpawner>().AsSingle();
     }
 }

@@ -24,5 +24,7 @@ public class PlayerInstaller : MonoInstaller<PlayerInstaller>
                 .AsSingle()
                 .WithArguments(transform);
         }
+        Container.BindInstance(settings.PlayerNum).WhenInjectedInto<MaterialSwitcher>();
+        Container.BindInstance(settings.PlayerNum).WhenInjectedInto<PlayerMover>();
     }
 }
