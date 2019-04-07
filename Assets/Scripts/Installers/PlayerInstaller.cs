@@ -1,24 +1,21 @@
 using System;
 using Players;
 using Players.InputEventProviderImpls;
-using UnityEngine;
 using Zenject;
 
 public class PlayerInstaller : MonoInstaller<PlayerInstaller>
 {
-    [SerializeField]
-    bool isPlayer;
-    [SerializeField]
-    int playerNum;
+    [Inject]
+    PlayerCore.Factory.PlayerSettings settings;
 
     public override void InstallBindings()
     {
-        if (isPlayer)
+        if (settings.IsPlayer)
         {
             Container.Bind(typeof(IInputEventProvider), typeof(IDisposable))
                 .To<PlayerInputEventProvider>()
                 .AsSingle()
-                .WithArguments(playerNum);
+                .WithArguments(settings.PlayerNum);
         }
         else
         {
@@ -27,5 +24,7 @@ public class PlayerInstaller : MonoInstaller<PlayerInstaller>
                 .AsSingle()
                 .WithArguments(transform);
         }
+        Container.BindInstance(settings.PlayerNum).WhenInjectedInto<MaterialSwitcher>();
+        Container.BindInstance(settings.PlayerNum).WhenInjectedInto<PlayerMover>();
     }
 }
